@@ -37,6 +37,9 @@ func ipcalc(ip net.IP, ipnet *net.IPNet) {
 	broadcast := NewByteFromInt(ipv4.ToInt() | wildcard.ToInt())
 	hostMin := NewByteFromInt(network.ToInt() | 1<<0)      // set last bit on network
 	hostMax := NewByteFromInt(broadcast.ToInt() &^ 1 << 0) // clear last bit on broadcast
+	if broadcast.ToInt() == hostMin.ToInt() {
+		hostMax = hostMin
+	}
 
 	fmt.Printf("Address:   %-21s %s\n", ipv4.String(), ipv4.BinaryString())
 	fmt.Printf("Netmask:   %-21s %s\n", netmaskStr, netmask.BinaryString())
@@ -46,7 +49,7 @@ func ipcalc(ip net.IP, ipnet *net.IPNet) {
 	fmt.Printf("Broadcast: %-21s %s\n", broadcast.String(), broadcast.BinaryString())
 	fmt.Printf("HostMin:   %-21s %s\n", hostMin.String(), hostMin.BinaryString())
 	fmt.Printf("HostMax:   %-21s %s\n", hostMax.String(), hostMax.BinaryString())
-	fmt.Printf("Hosts/Net: %d\n", wildcard.ToInt()-1)
+	fmt.Printf("Hosts/Net: %d\n", hostMax.ToInt() - hostMin.ToInt())
 }
 
 type Byte []byte
