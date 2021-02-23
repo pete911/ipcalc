@@ -9,8 +9,9 @@ Go implementation of ipcalc command.
 ## run
 
 ipcalc takes either:
- - one argument: `<CIDR>` ([ipcalc](http://jodies.de/ipcalc))
- - three arguments: `<CIDR> <newbits> <netnum>` ([terraform cidrsubnet](https://www.terraform.io/docs/language/functions/cidrsubnet.html))
+- one argument: `<CIDR>` ([ipcalc](http://jodies.de/ipcalc))
+- two arguments: `<CIDR> <hostnum>` ([terraform cidrhost](https://www.terraform.io/docs/language/functions/cidrhost.html))
+- three arguments: `<CIDR> <newbits> <netnum>` ([terraform cidrsubnet](https://www.terraform.io/docs/language/functions/cidrsubnet.html))
 
 ### ipcalc example
 
@@ -27,6 +28,23 @@ HostMin:    192.168.0.1           11000000.10101000.00000000.00000001
 HostMax:    192.168.0.2           11000000.10101000.00000000.00000010
 Hosts/Net:  2
 TotalHosts: 4
+```
+
+### terraform cidrhost example
+
+```
+ipcalc 10.12.127.0/20 268
+
+Address:    10.12.128.12          00001010.00001100.10000000.00001100
+Netmask:    255.255.255.255 = 32  11111111.11111111.11111111.11111111
+Wildcard:   0.0.0.0               00000000.00000000.00000000.00000000
+=>
+Network:    10.12.128.12/32       00001010.00001100.10000000.00001100
+Broadcast:  N/A                   N/A
+HostMin:    N/A                   N/A
+HostMax:    N/A                   N/A
+Hosts/Net:  0
+TotalHosts: 1
 ```
 
 ### terraform cidrsubnet example

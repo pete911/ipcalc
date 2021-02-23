@@ -5,7 +5,12 @@ import (
 	"net"
 )
 
-func CIDRSubnet(ip net.IP, ipnet *net.IPNet, newbits, netnum int) error {
+func CIDRSubnet(cidr string, newbits, netnum int) error {
+
+	ip, ipnet, err := net.ParseCIDR(cidr)
+	if err != nil {
+		return fmt.Errorf("%s is invalid CIDR block\n", cidr)
+	}
 
 	ipv4 := Byte(ip.To4())
 	maskOnes, _ := ipnet.Mask.Size()
@@ -19,12 +24,7 @@ func CIDRSubnet(ip net.IP, ipnet *net.IPNet, newbits, netnum int) error {
 	mask := NewByteFromInt(uint32(netnum << shift))
 	subnet := NewByteFromInt(ipv4.ToInt() | mask.ToInt())
 
-	cidr := fmt.Sprintf("%s/%d", subnet.String(), networkPrefix)
-	ip, ipnet, err := net.ParseCIDR(cidr)
-	if err != nil {
-		return fmt.Errorf("cannot parse CIDR %s: %w", cidr, err)
-	}
-
-	IPCalc(ip, ipnet)
+	subnetCIDR := fmt.Sprintf("%s/%d", subnet.String(), networkPrefix)
+	IPCalc(subnetCIDR)
 	return nil
 }

@@ -5,7 +5,12 @@ import (
 	"net"
 )
 
-func IPCalc(ip net.IP, ipnet *net.IPNet) {
+func IPCalc(cidr string) error {
+
+	ip, ipnet, err := net.ParseCIDR(cidr)
+	if err != nil {
+		return fmt.Errorf("%s is invalid CIDR block\n", cidr)
+	}
 
 	ipv4 := Byte(ip.To4())
 	netmask := Byte(ipnet.Mask)
@@ -41,4 +46,5 @@ func IPCalc(ip net.IP, ipnet *net.IPNet) {
 	fmt.Printf("HostMax:    %-21s %s\n", hostMax.String(), hostMax.BinaryString())
 	fmt.Printf("Hosts/Net:  %d\n", hosts)
 	fmt.Printf("TotalHosts: %d\n", totalHosts)
+	return nil
 }
