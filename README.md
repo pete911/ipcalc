@@ -8,6 +8,11 @@ Go implementation of ipcalc command.
 
 `go build` or `go install`
 
+## download
+
+- [binary](https://github.com/pete911/ipcalc/releases)
+- [docker](https://hub.docker.com/repository/docker/pete911/ipcalc)
+
 ## run
 
 ipcalc takes either:
