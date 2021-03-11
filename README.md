@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/pete911/ipcalc.svg?branch=main)](https://travis-ci.com/pete911/ipcalc)
+
 # ipcalc
 
 Go implementation of ipcalc command.
