@@ -6,10 +6,13 @@ import (
 	"strconv"
 )
 
+var Version = "dev"
+
 func main() {
 
 	args := os.Args[1:]
 	if len(args) == 0 {
+		fmt.Printf("version %s\n", Version)
 		fmt.Println("provide <CIDR> (e.g. 192.168.0.1/24), <CIDR> <hostnum> or <CIDR> <newbits> <netnum> as argument")
 		os.Exit(1)
 	}
