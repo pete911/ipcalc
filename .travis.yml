@@ -32,10 +32,10 @@ deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   file:
-    - "releases/ipcalc_linux_amd64.tar.gz"
-    - "releases/ipcalc_linux_amd64_darwin_amd64.tar.gz"
-    - "releases/ipcalc_windows_amd64.tar.gz"
+    - "releases/ipcalc_darwin_amd64.tar.gz"
     - "releases/ipcalc_darwin_arm64.tar.gz"
+    - "releases/ipcalc_linux_amd64.tar.gz"
+    - "releases/ipcalc_windows_amd64.tar.gz"
   skip_cleanup: true
   on:
     branch: main
