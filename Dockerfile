@@ -7,7 +7,7 @@ RUN go test ./...
 ARG version=dev
 RUN go build -ldflags "-X main.Version=$version" -o /bin/ipcalc
 
-FROM alpine:3.14.0
+FROM alpine:3.14.1
 
 COPY --from=build /bin/ipcalc /usr/local/bin/ipcalc
 ENTRYPOINT ["ipcalc"]
