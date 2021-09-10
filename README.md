@@ -15,7 +15,7 @@ Go implementation of ipcalc command.
 ### brew
 
 - add tap `brew tap pete911/tap`
-- install `brew install ipcalc`
+- install `brew install pete911/tap/ipcalc`
 
 ### go
 
