@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/pete911/ipcalc.svg?branch=main)](https://travis-ci.com/pete911/ipcalc)
-
 # ipcalc
 
 Go implementation of ipcalc command.
@@ -11,7 +9,24 @@ Go implementation of ipcalc command.
 ## download
 
 - [binary](https://github.com/pete911/ipcalc/releases)
-- [docker](https://hub.docker.com/repository/docker/pete911/ipcalc)
+
+## build/install
+
+### brew
+
+- add tap `brew tap pete911/tap`
+- install `brew install ipcalc`
+
+### go
+
+[go](https://golang.org/dl/) has to be installed.
+- build `make build`
+- install `make install`
+
+## release
+
+Releases are published when the new tag is created e.g.
+`git tag -m "add super cool feature" v1.0.0 && git push --follow-tags`
 
 ## run
 

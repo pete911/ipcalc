@@ -1,0 +1,37 @@
+builds:
+  -
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -X main.Version={{.Version}}
+checksum:
+  name_template: 'checksums.txt'
+dist: releases
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+release:
+  github:
+    owner: pete911
+    name: ipcalc
+brews:
+  - tap:
+      owner: pete911
+      name: homebrew-tap
+      token: "{{ .Env.GITHUB_TOKEN }}"
+    name: ipcalc
+    homepage: "https://github.com/pete911/ipcalc"
+    description: "IP calculator"
+    folder: Formula
+    install: |
+      bin.install "ipcalc"
+    test: |
+      assert_match /version/, shell_output("#{bin}/ipcalc", 0)
