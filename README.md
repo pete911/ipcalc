@@ -1,5 +1,7 @@
 # ipcalc
 
+[![pipeline](https://github.com/pete911/ipcalc/actions/workflows/pipeline.yml/badge.svg)](https://github.com/pete911/ipcalc/actions/workflows/pipeline.yml)
+
 Go implementation of ipcalc command.
 
 ## build
