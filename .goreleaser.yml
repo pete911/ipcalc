@@ -1,3 +1,4 @@
+version: 2
 builds:
   - env:
       - CGO_ENABLED=0
@@ -12,14 +13,14 @@ builds:
       - -X main.Version={{.Version}}
 
 archives:
-  - format: tar.gz
+  - formats: [ 'tar.gz' ]
     format_overrides:
       - goos: windows
-        format: zip
+        formats: [ 'zip' ]
 checksum:
   name_template: 'checksums.txt'
 snapshot:
-  name_template: "{{ incpatch .Version }}-next"
+  version_template: "{{ incpatch .Version }}-next"
 changelog:
   sort: asc
   filters:
@@ -30,7 +31,7 @@ release:
   github:
     owner: pete911
     name: ipcalc
-brews:
+homebrew_casks:
   - repository:
       owner: pete911
       name: homebrew-tap
@@ -38,8 +39,3 @@ brews:
     name: ipcalc
     homepage: "https://github.com/pete911/ipcalc"
     description: "IP calculator"
-    folder: Formula
-    install: |
-      bin.install "ipcalc"
-    test: |
-      assert_match /version/, shell_output("#{bin}/ipcalc", 0)

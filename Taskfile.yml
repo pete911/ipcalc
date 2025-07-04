@@ -1,0 +1,17 @@
+version: '3'
+
+vars:
+  VERSION: dev
+
+tasks:
+  test:
+    cmds:
+      - go fmt ./...
+      - go vet ./...
+      - go test ./...
+
+  default:
+    deps:
+      - task: test
+    cmds:
+      - go build -ldflags "-X main.Version={{.VERSION}}"

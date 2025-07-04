@@ -22,8 +22,7 @@ Go implementation of ipcalc command.
 ### go
 
 [go](https://golang.org/dl/) has to be installed.
-- build `make build`
-- install `make install`
+- build `go build` (or with `Taskfile.yml` - `task`)
 
 ## release
 
