@@ -39,3 +39,10 @@ homebrew_casks:
     name: ipcalc
     homepage: "https://github.com/pete911/ipcalc"
     description: "IP calculator"
+    hooks:
+       post:
+         install: |
+           if system_command("/usr/bin/xattr", args: ["-h"]).exit_status == 0
+             system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/ipcalc"]
+           end
+
