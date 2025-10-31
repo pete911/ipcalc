@@ -14,6 +14,26 @@ Go implementation of ipcalc command.
 
 ## build/install
 
+### pkgx
+
+[https://github.com/pkgXdev/pkgx](https://docs.pkgx.sh/) must be installed.
+
+Just run ipcalc without installation
+```bash
+% pkgx +github.com/pete911/ipcalc@1.0.3 ipcalc
+version 1.0.3
+provide <CIDR> (e.g. 192.168.0.1/24), <CIDR> <hostnum> or <CIDR> <newbits> <netnum> as argument
+% ipcalc
+zsh: command not found: ipcalc
+```
+or install one system-wide specific version
+```bash
+% sudo pkgm install ipcalc@1.0.3
+% ipcalc
+version 1.0.3
+provide <CIDR> (e.g. 192.168.0.1/24), <CIDR> <hostnum> or <CIDR> <newbits> <netnum> as argument
+```
+
 ### brew
 
 - add tap `brew tap pete911/tap`
