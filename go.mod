@@ -1,6 +1,6 @@
 module github.com/pete911/ipcalc
 
-go 1.27
+go 1.27.3
 
 require github.com/stretchr/testify v1.12.1
 
